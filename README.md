@@ -25,6 +25,21 @@ npm run build      # production bundle in dist/
 |---|---|
 | `VITE_API_URL` | Backend base URL. Leave empty (default) — the app calls same-origin `/api`, which the Vite dev proxy handles locally and the edge nginx handles in Docker/EC2. Only set it if the API is ever hosted on a different origin. |
 
-## Deployment
+## Component architecture
 
-Deployed together with the backend on a single EC2 instance via Docker Compose — the compose file, edge nginx and CI/CD deploy scripts live in the [backend repo](https://github.com/MahrukhMuzzamil/TruckDriverLog-Backend). Every push to `main` here builds and redeploys just the frontend container.
+```mermaid
+flowchart TD
+    A[App<br/>state: trip, loading, error] --> H[Header]
+    A --> F[TripForm]
+    F --> LI[LocationInput ×3<br/>debounced autocomplete]
+    A --> LD[Loader<br/>animated overlay]
+    A --> S[StatsBar<br/>7 KPI cards]
+    A --> M[MapView<br/>react-leaflet: route + typed pins]
+    A --> IT[Itinerary<br/>duty-event timeline]
+    A --> LB[LogBook<br/>day tabs + print]
+    LB --> LS[LogSheet<br/>SVG ELD daily log renderer]
+    F -. "POST /api/trips/" .-> API[(Django API)]
+    LI -. "GET /api/geocode/suggest/" .-> API
+```
+
+CI (GitHub Actions) builds every push and continuously deploys `main`.

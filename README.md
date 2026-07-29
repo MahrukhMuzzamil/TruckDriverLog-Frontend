@@ -23,10 +23,8 @@ npm run build      # production bundle in dist/
 
 | Variable | Purpose |
 |---|---|
-| `VITE_API_URL` | Backend base URL. Empty = same-origin `/api` (dev proxy / Docker nginx). On Vercel set it to your deployed API, e.g. `https://api.example.com/api` |
+| `VITE_API_URL` | Backend base URL. Leave empty (default) — the app calls same-origin `/api`, which the Vite dev proxy handles locally and the edge nginx handles in Docker/EC2. Only set it if the API is ever hosted on a different origin. |
 
-## Deploy to Vercel
+## Deployment
 
-1. Import this repo in Vercel (framework preset: **Vite**).
-2. Set `VITE_API_URL` in Project → Settings → Environment Variables.
-3. Deploy — `vercel.json` already handles the SPA rewrite.
+Deployed together with the backend on a single EC2 instance via Docker Compose — the compose file, edge nginx and CI/CD deploy scripts live in the [backend repo](https://github.com/MahrukhMuzzamil/TruckDriverLog-Backend). Every push to `main` here builds and redeploys just the frontend container.

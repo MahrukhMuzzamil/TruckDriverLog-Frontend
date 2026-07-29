@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// Same-origin `/api` by default (Vite dev proxy + nginx in Docker Compose).
-// On Vercel, VITE_API_URL points at the deployed backend.
+// Same-origin `/api` by default (Vite dev proxy locally, edge nginx on EC2).
+// VITE_API_URL is only needed if the API ever lives on a different origin.
 const baseURL = import.meta.env.VITE_API_URL || "/api";
 
 const client = axios.create({ baseURL, timeout: 60000 });

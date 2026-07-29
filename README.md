@@ -1,6 +1,6 @@
 # TruckDriverLog — Frontend
 
-React (Vite) SPA for the [RouteLedger](https://github.com/MahrukhMuzzamil/TruckDriverLog) ELD trip planner: trip form with location autocomplete, interactive route map, duty itinerary, and **auto-drawn FMCSA Driver's Daily Log sheets** (SVG, print-ready). See the root repo for full docs.
+React (Vite) SPA for the RouteLedger ELD trip planner: trip form with location autocomplete, interactive route map, duty itinerary, and **auto-drawn FMCSA Driver's Daily Log sheets** (SVG, print-ready). Full project docs, Docker Compose and deployment live in the [backend repo](https://github.com/MahrukhMuzzamil/TruckDriverLog-Backend).
 
 ## Stack & highlights
 

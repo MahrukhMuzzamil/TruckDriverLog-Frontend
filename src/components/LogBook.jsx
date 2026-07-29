@@ -1,15 +1,12 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-import { STATUS_META, fmtDate } from "../utils/format";
+import { fmtDate } from "../utils/format";
+import Icon from "./Icon.jsx";
 import LogSheet from "./LogSheet.jsx";
 
 export default function LogBook({ logs, result }) {
   const [activeDay, setActiveDay] = useState(0);
-
-  function handlePrint() {
-    window.print();
-  }
 
   return (
     <div className="card logbook" data-tour="logbook">
@@ -17,12 +14,13 @@ export default function LogBook({ logs, result }) {
         <div>
           <div className="section-title"><span className="dot" /> Daily log sheets</div>
           <div className="section-sub">
-            {logs.length} {logs.length === 1 ? "sheet" : "sheets"} ·{" "}
-            {Object.values(STATUS_META).map((meta) => meta.label).join(" / ")} drawn automatically
+            {logs.length} {logs.length === 1 ? "sheet" : "sheets"} — duty lines, totals and remarks drawn automatically
           </div>
         </div>
         <div className="log-actions">
-          <button className="btn btn-ghost" onClick={handlePrint}>🖨️ Print / PDF</button>
+          <button className="btn btn-ghost-dark" onClick={() => window.print()}>
+            <Icon name="printer" size={15} /> Print / PDF
+          </button>
         </div>
       </div>
 

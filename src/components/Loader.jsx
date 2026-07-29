@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import Icon from "./Icon.jsx";
+
 const MESSAGES = [
   "Geocoding your locations…",
   "Finding the best truck route…",
@@ -19,7 +21,9 @@ export default function Loader() {
   return (
     <div className="loader-overlay">
       <div className="card loader-card">
-        <span className="truck-emoji">🚛</span>
+        <span className="loader-truck" style={{ display: "inline-block" }}>
+          <Icon name="truck" size={46} strokeWidth={1.5} />
+        </span>
         <div className="road" />
         <div className="msg">{MESSAGES[index]}</div>
       </div>

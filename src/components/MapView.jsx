@@ -8,7 +8,7 @@ function makeIcon(type) {
   const meta = STOP_META[type] || STOP_META.start;
   return L.divIcon({
     className: "",
-    html: `<div class="pin" style="background:${meta.color}"><span>${meta.icon}</span></div>`,
+    html: `<div class="pin" style="background:${meta.color}"><span>${meta.short}</span></div>`,
     iconSize: [26, 26],
     iconAnchor: [13, 26],
     popupAnchor: [0, -26],
@@ -39,7 +39,7 @@ export default function MapView({ route, stops }) {
   return (
     <div className="card map-card" data-tour="map">
       <div className="card-head">
-        <div className="section-title"><span className="dot" /> Route & stops</div>
+        <div className="section-title"><span className="dot" /> Route &amp; stops</div>
         <div className="section-sub">
           {route.legs.map((leg) => `${leg.name}: ${leg.distance_miles.toLocaleString()} mi`).join(" · ")}
         </div>
@@ -48,15 +48,15 @@ export default function MapView({ route, stops }) {
       <MapContainer center={[39.5, -98.35]} zoom={4} scrollWheelZoom>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
         />
         <Polyline
           positions={route.geometry}
-          pathOptions={{ color: "#ffb547", weight: 4, opacity: 0.9 }}
+          pathOptions={{ color: "#1d4ed8", weight: 9, opacity: 0.12 }}
         />
         <Polyline
           positions={route.geometry}
-          pathOptions={{ color: "#ff8a3d", weight: 9, opacity: 0.15 }}
+          pathOptions={{ color: "#2563eb", weight: 4, opacity: 0.95 }}
         />
         {stops.map((stop, index) => (
           <Marker
@@ -65,7 +65,7 @@ export default function MapView({ route, stops }) {
             icon={icons[stop.type] || icons.start}
           >
             <Popup>
-              <strong>{STOP_META[stop.type]?.icon} {stop.label}</strong>
+              <strong>{stop.label}</strong>
               <br />
               Arrive: {fmtDateTime(stop.arrival)}
               {stop.duration_hours > 0 && (

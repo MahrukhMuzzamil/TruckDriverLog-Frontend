@@ -4,7 +4,7 @@ const STEPS = [
   {
     element: "[data-tour='form']",
     popover: {
-      title: "Plan a trip 🚛",
+      title: "Plan a trip",
       description:
         "Enter where you are now, where you'll pick up the load, and where it's headed. Start typing and pick a suggestion.",
       side: "bottom",
@@ -56,7 +56,7 @@ const STEPS = [
   {
     element: "[data-tour='logbook']",
     popover: {
-      title: "Daily log sheets 📋",
+      title: "Daily log sheets",
       description:
         "FMCSA-style driver's daily logs, drawn automatically — one sheet per day, with duty lines, totals and remarks. Print-ready.",
       side: "top",

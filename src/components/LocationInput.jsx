@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { suggestLocations } from "../api";
+import Icon from "./Icon.jsx";
 
 /** Text input with debounced, keyboard-navigable location autocomplete. */
 export default function LocationInput({ id, label, icon, placeholder, value, onChange }) {
@@ -68,7 +69,7 @@ export default function LocationInput({ id, label, icon, placeholder, value, onC
   return (
     <div className="field" ref={wrapRef}>
       <label htmlFor={id}>
-        <span>{icon}</span> {label}
+        <Icon name={icon} size={15} /> {label}
       </label>
       <div className="field-input">
         <input
@@ -90,7 +91,7 @@ export default function LocationInput({ id, label, icon, placeholder, value, onC
                 className={index === active ? "active" : ""}
                 onClick={() => pick(suggestion)}
               >
-                📍 {suggestion.name}
+                {suggestion.name}
               </button>
             ))}
           </div>

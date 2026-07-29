@@ -20,8 +20,8 @@ const ROW_LABELS = ["1. Off Duty", "2. Sleeper Berth", "3. Driving", "4. On Duty
 
 const INK = "#1e293b";
 const INK_SOFT = "#64748b";
-const PAPER = "#fbf8f1";
-const GRID_LINE = "#b6c0d0";
+const PAPER = "#ffffff";
+const GRID_LINE = "#c3cbd8";
 
 const xAt = (hour) => X0 + hour * COL_W;
 const rowCenter = (status) => Y0 + ROWS.indexOf(status) * ROW_H + ROW_H / 2;
@@ -85,7 +85,7 @@ export default function LogSheet({ day, result }) {
     <svg className="log-svg" viewBox="0 0 1080 585" role="img" aria-label={`Daily log for ${day.date}`}>
       {/* paper */}
       <rect x="0" y="0" width="1080" height="585" rx="10" fill={PAPER} />
-      <rect x="0.75" y="0.75" width="1078.5" height="583.5" rx="10" fill="none" stroke="#d8d2c2" strokeWidth="1.5" />
+      <rect x="0.75" y="0.75" width="1078.5" height="583.5" rx="10" fill="none" stroke="#d3dae4" strokeWidth="1.5" />
 
       {/* ---------- header ---------- */}
       <text x="540" y="34" textAnchor="middle" fill={INK} fontSize="19" fontWeight="700" fontFamily="Sora, sans-serif">

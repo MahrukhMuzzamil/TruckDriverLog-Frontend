@@ -45,25 +45,29 @@ export default function App() {
       <Header onTour={startTour} />
 
       <main>
-        <section className="hero container">
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55 }}
-          >
-            <span className="hero-eyebrow">⚡ FMCSA 70hr / 8day · Property carrier</span>
-            <h1>
-              Route smart. <span className="glow">Log automatically.</span>
-            </h1>
-            <p>
-              Enter a trip and get the full picture in seconds — the route with every
-              mandatory rest, break and fuel stop, plus your daily ELD log sheets drawn
-              and totaled for you.
-            </p>
-          </motion.div>
-
-          <TripForm onSubmit={handlePlan} loading={loading} error={error} />
+        <section className="hero-band">
+          <div className="container">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55 }}
+            >
+              <span className="hero-eyebrow">FMCSA 70hr / 8day &middot; Property Carrier</span>
+              <h1>
+                Route smart. <span className="glow">Log automatically.</span>
+              </h1>
+              <p>
+                Enter a trip and get the full picture in seconds — the route with every
+                mandatory rest, break and fuel stop, plus your daily ELD log sheets drawn
+                and totaled for you.
+              </p>
+            </motion.div>
+          </div>
         </section>
+
+        <div className="container">
+          <TripForm onSubmit={handlePlan} loading={loading} error={error} />
+        </div>
 
         <AnimatePresence>
           {result && (
@@ -90,9 +94,9 @@ export default function App() {
 
       <footer className="footer">
         <div className="container">
-          RouteLedger — ELD trip planner · Routing by{" "}
-          <a href="https://project-osrm.org" target="_blank" rel="noreferrer">OSRM</a> · Geocoding by{" "}
-          <a href="https://nominatim.org" target="_blank" rel="noreferrer">Nominatim</a> · Map data ©{" "}
+          RouteLedger — ELD trip planner &middot; Routing by{" "}
+          <a href="https://project-osrm.org" target="_blank" rel="noreferrer">OSRM</a> &middot; Geocoding by{" "}
+          <a href="https://nominatim.org" target="_blank" rel="noreferrer">Nominatim</a> &middot; Map data ©{" "}
           <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a>
         </div>
       </footer>

@@ -1,13 +1,14 @@
 import { STATUS_META, fmtDateTime, fmtHours } from "../utils/format";
+import Icon from "./Icon.jsx";
 
 const KIND_ICONS = {
-  drive: "🛣️",
-  pickup: "📦",
-  dropoff: "🎯",
-  fuel: "⛽",
-  break30: "☕",
-  rest10: "🌙",
-  restart34: "🔄",
+  drive: "truck",
+  pickup: "package",
+  dropoff: "target",
+  fuel: "fuel",
+  break30: "coffee",
+  rest10: "moon",
+  restart34: "refresh",
 };
 
 export default function Itinerary({ schedule }) {
@@ -23,13 +24,15 @@ export default function Itinerary({ schedule }) {
           const meta = STATUS_META[event.status];
           return (
             <div className="tl-item" key={index}>
-              <div className="tl-dot">{KIND_ICONS[event.kind] || "•"}</div>
+              <div className="tl-dot">
+                <Icon name={KIND_ICONS[event.kind] || "clock"} size={13} strokeWidth={2} />
+              </div>
               <div className="tl-body">
                 <div className="tl-title">
                   {event.label}
                   <span
                     className="chip"
-                    style={{ background: `${meta.color}22`, color: meta.color }}
+                    style={{ background: `${meta.color}1a`, color: meta.color }}
                   >
                     {meta.label}
                   </span>

@@ -36,7 +36,7 @@ export default function TripForm({ onSubmit, loading, error }) {
           <LocationInput
             id="current"
             label="Current location"
-            icon="🧭"
+            icon="pin"
             placeholder="e.g. Chicago, IL"
             value={current}
             onChange={setCurrent}
@@ -45,7 +45,7 @@ export default function TripForm({ onSubmit, loading, error }) {
         <LocationInput
           id="pickup"
           label="Pickup location"
-          icon="📦"
+          icon="package"
           placeholder="e.g. Indianapolis, IN"
           value={pickup}
           onChange={setPickup}
@@ -53,13 +53,13 @@ export default function TripForm({ onSubmit, loading, error }) {
         <LocationInput
           id="dropoff"
           label="Drop-off location"
-          icon="🎯"
+          icon="target"
           placeholder="e.g. Denver, CO"
           value={dropoff}
           onChange={setDropoff}
         />
         <div className="full field" data-tour="cycle">
-          <label htmlFor="cycle">⏱️ Current cycle used — hours on duty in the last 8 days</label>
+          <label htmlFor="cycle">Current cycle used — hours on duty in the last 8 days</label>
           <div className="cycle-row">
             <input
               id="cycle"
@@ -80,12 +80,12 @@ export default function TripForm({ onSubmit, loading, error }) {
             data-tour="plan-btn"
             disabled={!ready || loading}
           >
-            {loading ? "Planning…" : "Plan my trip →"}
+            {loading ? "Planning trip…" : "Plan my trip"}
           </button>
         </div>
       </div>
 
-      {error && <div className="form-error">⚠️ {error}</div>}
+      {error && <div className="form-error">{error}</div>}
     </motion.form>
   );
 }
